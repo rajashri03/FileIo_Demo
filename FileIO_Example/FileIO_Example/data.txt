@@ -1,1 +1,4 @@
-﻿
+﻿Hello..
+FileIo-
+* A file is a collection of data
+* When a file is opened for reading or writing, it becomes a stream.

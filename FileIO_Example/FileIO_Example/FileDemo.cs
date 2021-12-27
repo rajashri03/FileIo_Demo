@@ -9,12 +9,17 @@ namespace FileIO_Example
 {
     public class FileDemo
     {
-        const string FilePath = @"D:\Bridgelab\FileIO_Example\FileIO_Example\data.txt";
+        //File Path
+        const string FilePath = @"D:\Bridgelab\FileIo_Demo\FileIO_Example\FileIO_Example\data.txt";
+        /// <summary>
+        /// check file is exist or not and  read data from file
+        /// </summary>
         public static void ReadData()
         {
             if(File.Exists(FilePath))
             {
-                Console.WriteLine("File is exist");
+                var data = File.ReadAllText(FilePath);
+                Console.WriteLine(data);
             }
             else
             {
