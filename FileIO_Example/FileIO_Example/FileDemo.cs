@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System.Xml.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FileIO_Example
 {
@@ -20,9 +18,28 @@ namespace FileIO_Example
         {
             if(File.Exists(FilePath))
             {
+                var data = File.ReadAllText(FilePath);
+                Console.WriteLine(data);
                 using (StreamReader sr = new StreamReader(FilePath))
                 {
-                    while(!sr.EndOfStream)
+                    while (!sr.EndOfStream)
+                    {
+                        Console.WriteLine(sr.ReadLine());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("File is not exist");
+            }
+        }
+        public static void ReadDataUsingStreamReader()
+        {
+            if (File.Exists(FilePath))
+            {   
+                using (StreamReader sr = new StreamReader(FilePath))
+                {
+                    while (!sr.EndOfStream)
                     {
                         Console.WriteLine(sr.ReadLine());
                     }
