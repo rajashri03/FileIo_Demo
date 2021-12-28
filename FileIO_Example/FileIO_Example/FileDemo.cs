@@ -36,6 +36,16 @@ namespace FileIO_Example
             BinaryFormatter bn = new BinaryFormatter();
             bn.Serialize(streamdata,data);
         }
+        /// <summary>
+        /// Deserialization
+        /// </summary>
+        public static void Deserialization()
+        {
+            FileStream streamdata = new FileStream(FilePath_Serializeddata, FileMode.Open);
+            BinaryFormatter bn = new BinaryFormatter();
+            List<Contact> data = (List<Contact>)bn.Deserialize(streamdata);
+            streamdata.Close();
+        }
 
         /// <summary>
         /// check file is exist or not and  read data from file

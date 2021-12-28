@@ -6,7 +6,7 @@ bool status = true;
 while(status)
 {
     Console.WriteLine("Select\n1)Check File is exits or not And read data\n2)Using StreamReader\n3)OverWriteData\n" +
-        "4)AppendData\n5)Serialization");
+        "4)AppendData\n5)Serialization and Deserialization");
     int op = Convert.ToInt32(Console.ReadLine());
     switch(op)
     {
@@ -29,8 +29,22 @@ while(status)
             FileDemo.AppendData(data1,true);
             break;
         case 5:
-            FileDemo.Serialization();
-            Console.WriteLine("Your Data is serialized in binary format");
+            Console.WriteLine("1)Serialization\n2)Deserialization");
+            int op2= Convert.ToInt32(Console.ReadLine());
+            switch(op2)
+            {
+                case 1:
+                    FileDemo.Serialization();
+                    Console.WriteLine("Your Data is serialized in binary format");
+                    break;
+                case 2:
+                    FileDemo.Deserialization();
+                    Console.WriteLine("Your Data is Deserialized");
+                    break;
+                default:
+                    Console.WriteLine("invalid option");
+                    break;
+            }
             break;
         default:
             status = !status;
