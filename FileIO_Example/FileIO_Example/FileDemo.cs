@@ -4,19 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 
 namespace FileIO_Example
 {
+    [Serializable]
+    //POCO Model
+    public class Contact
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
     public class FileDemo
     {
         //File Path
         const string FilePath = @"D:\Bridgelab\FileIo_Demo\FileIO_Example\FileIO_Example\data.txt";
+        const string FilePath_Serializeddata = @"D:\Bridgelab\FileIo_Demo\FileIO_Example\FileIO_Example\serializeddata.txt";
+        /// <summary>
+        /// Serialise data in binary format using Serialize Method
+        /// </summary>
+        public static void Serialization()
+        {
+            List<Contact> data = new List<Contact>() 
+            { 
+                new Contact {Age = 25, Name = "Rajashri" },
+                new Contact {Age = 24, Name = "Sayali" },
+                new Contact {Age = 23, Name = "Aditi" },
+            };
+            FileStream streamdata = new FileStream(FilePath_Serializeddata, FileMode.Create);
+            BinaryFormatter bn = new BinaryFormatter();
+            bn.Serialize(streamdata,data);
+        }
+
         /// <summary>
         /// check file is exist or not and  read data from file
         /// </summary>
         public static void ReadData()
         {
-            if(File.Exists(FilePath))
+            if (File.Exists(FilePath))
             {
                 var data = File.ReadAllText(FilePath);
                 Console.WriteLine(data);
@@ -59,7 +85,7 @@ namespace FileIO_Example
         /// Overwrite the existing data
         /// </summary>
         /// <param name="newline"></param>
-        public static void OverWriteData(string newline="")
+        public static void OverWriteData(string newline = "")
         {
             File.WriteAllText(FilePath, newline);
             using (StreamReader sr = new StreamReader(FilePath))
