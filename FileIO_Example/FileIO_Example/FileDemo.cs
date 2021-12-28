@@ -33,10 +33,15 @@ namespace FileIO_Example
                 Console.WriteLine("File is not exist");
             }
         }
+        /// <summary>
+        /// Read data using StreanReader class
+        /// </summary>
         public static void ReadDataUsingStreamReader()
         {
             if (File.Exists(FilePath))
-            {   
+            {
+                // Create an instance of StreamReader to read from a file.
+                // The using statement also closes the StreamReader
                 using (StreamReader sr = new StreamReader(FilePath))
                 {
                     while (!sr.EndOfStream)
@@ -48,6 +53,21 @@ namespace FileIO_Example
             else
             {
                 Console.WriteLine("File is not exist");
+            }
+        }
+        /// <summary>
+        /// Overwrite the existing data
+        /// </summary>
+        /// <param name="newline"></param>
+        public static void OverWriteData(string newline="")
+        {
+            File.WriteAllText(FilePath, newline);
+            using (StreamReader sr = new StreamReader(FilePath))
+            {
+                while (!sr.EndOfStream)
+                {
+                    Console.WriteLine(sr.ReadLine());
+                }
             }
         }
     }
