@@ -70,5 +70,21 @@ namespace FileIO_Example
                 }
             }
         }
+        /// <summary>
+        /// Append Data using AppendAllText
+        /// </summary>
+        /// <param name="newline"></param>
+        /// <param name="append"></param>
+        public static void AppendData(string newline = "", bool append = true)
+        {
+            File.AppendAllText(FilePath, newline);
+            using (StreamReader sr = new StreamReader(FilePath))
+            {
+                while (!sr.EndOfStream)
+                {
+                    Console.WriteLine(sr.ReadLine());
+                }
+            }
+        }
     }
 }
