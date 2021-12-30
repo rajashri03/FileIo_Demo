@@ -21,10 +21,11 @@ namespace FileIO_Example
         //File Path
         const string FilePath = @"D:\Bridgelab\FileIo_Demo\FileIO_Example\FileIO_Example\data.txt";
         const string FilePath_Serializeddata = @"D:\Bridgelab\FileIo_Demo\FileIO_Example\FileIO_Example\serializeddata.txt";
+        const string FilePath_XmlSerializeddata = @"D:\Bridgelab\FileIo_Demo\FileIO_Example\FileIO_Example\xmlserializeddata.txt";
         /// <summary>
-        /// Serialise data in binary format using Serialize Method
+        /// Serialization-object to binary
         /// </summary>
-        public static void Serialization()
+        public static void BinarySerialization()
         {
             List<Contact> data = new List<Contact>() 
             { 
@@ -35,18 +36,30 @@ namespace FileIO_Example
             FileStream streamdata = new FileStream(FilePath_Serializeddata, FileMode.Create);
             BinaryFormatter bn = new BinaryFormatter();
             bn.Serialize(streamdata,data);
+            streamdata.Close();
+            streamdata.Dispose();
+            Console.WriteLine("*** Convert Object To Binary ***");
+            string binaryTxt = File.ReadAllText(FilePath_Serializeddata);
+            Console.WriteLine(binaryTxt);
+            Console.WriteLine("\n=====================================================\n");
         }
         /// <summary>
-        /// Deserialization
+        /// Deserialization -binary to object
         /// </summary>
-        public static void Deserialization()
+        public static void BinaryDeserialization()
         {
             FileStream streamdata = new FileStream(FilePath_Serializeddata, FileMode.Open);
             BinaryFormatter bn = new BinaryFormatter();
             List<Contact> data = (List<Contact>)bn.Deserialize(streamdata);
             streamdata.Close();
+            Console.WriteLine("*** Convert List Of Binary Data To Object***");
+            foreach (var contact in data)
+            {
+                Console.WriteLine(contact.Name);
+                Console.WriteLine(contact.Age);
+            }
+            Console.WriteLine("\n=====================================================\n");
         }
-
         /// <summary>
         /// check file is exist or not and  read data from file
         /// </summary>

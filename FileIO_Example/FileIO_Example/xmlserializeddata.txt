@@ -1,0 +1,1 @@
+﻿<?xml version="1.0" encoding="utf-8"?><ArrayOfContact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Contact><Name>Rajashri</Name><Age>25</Age></Contact><Contact><Name>Sayali</Name><Age>24</Age></Contact><Contact><Name>Aditi</Name><Age>23</Age></Contact></ArrayOfContact>
