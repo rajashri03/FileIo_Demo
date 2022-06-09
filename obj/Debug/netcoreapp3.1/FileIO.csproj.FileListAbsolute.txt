@@ -1,0 +1,16 @@
+D:\RFP146\FileIO\bin\Debug\netcoreapp3.1\FileIO.exe
+D:\RFP146\FileIO\bin\Debug\netcoreapp3.1\FileIO.deps.json
+D:\RFP146\FileIO\bin\Debug\netcoreapp3.1\FileIO.runtimeconfig.json
+D:\RFP146\FileIO\bin\Debug\netcoreapp3.1\FileIO.runtimeconfig.dev.json
+D:\RFP146\FileIO\bin\Debug\netcoreapp3.1\FileIO.dll
+D:\RFP146\FileIO\bin\Debug\netcoreapp3.1\FileIO.pdb
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.csproj.AssemblyReference.cache
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.GeneratedMSBuildEditorConfig.editorconfig
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.AssemblyInfoInputs.cache
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.AssemblyInfo.cs
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.csproj.CoreCompileInputs.cache
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.dll
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.pdb
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.genruntimeconfig.cache
+D:\RFP146\FileIO\bin\Debug\netcoreapp3.1\CsvHelper.dll
+D:\RFP146\FileIO\obj\Debug\netcoreapp3.1\FileIO.csproj.CopyComplete

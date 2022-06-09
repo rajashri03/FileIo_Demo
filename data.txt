@@ -1,0 +1,181 @@
+﻿const string FilePath = @"D:\Bridgelab\FileIo_Demo\FileIO_Example\FileIO_Example\data.txt";
+        /// <summary>
+        /// check file is exist or not and  read data from file
+        /// </summary>
+        public static void ReadData()
+        {
+            if(File.Exists(FilePath))
+            {
+                var data = File.ReadAllText(FilePath);
+                Console.WriteLine(data);
+                using (StreamReader sr = new StreamReader(FilePath))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        Console.WriteLine(sr.ReadLine());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("File is not exist");
+            }
+        }
+        /// <summary>
+        /// Read data using StreanReader class
+        /// </summary>
+        public static void ReadDataUsingStreamReader()
+        {
+            if (File.Exists(FilePath))
+            {
+                // Create an instance of StreamReader to read from a file.
+                // The using statement also closes the StreamReader
+                using (StreamReader sr = new StreamReader(FilePath))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        Console.WriteLine(sr.ReadLine());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("File is not exist");
+            }
+        }
+        /// <summary>
+        /// Overwrite the existing data
+        /// </summary>
+        /// <param name="newline"></param>
+        public static void OverWriteData(string newline="")
+        {
+            File.WriteAllText(FilePath, newline);
+            using (StreamReader sr = new StreamReader(FilePath))
+            {
+                while (!sr.EndOfStream)
+                {
+                    Console.WriteLine(sr.ReadLine());
+                }
+            }
+        }
+        /// <summary>
+        /// Append Data using AppendAllText
+        /// </summary>
+        /// <param name="newline"></param>
+        public static void AppendData(string newline = "")
+        {
+            File.AppendAllText(FilePath, newline);
+            using (StreamReader sr = new StreamReader(FilePath))
+            {
+                while (!sr.EndOfStream)
+                {
+                    Console.WriteLine(sr.ReadLine());
+                }
+            }
+        }
+
+
+
+
+
+
+         while (true)
+            {
+
+                Console.WriteLine("Select\n1)Check File is exits or not And read data\n2)Using StreamReader\n3)OverWriteData\n4)AppendData");
+                int op = Convert.ToInt32(Console.ReadLine());
+                switch (op)
+                {
+                    case 1:
+                        FilestreeamEx.ReadData();
+                        break;
+                    case 2:
+                        FilestreeamEx.ReadDataUsingStreamReader();
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter Data");
+                        string data = Console.ReadLine();
+                        Console.WriteLine($"Added - {data} ");
+                        FilestreeamEx.OverWriteData(data);
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter Data");
+                        string data1 = Console.ReadLine();
+                        Console.WriteLine($"Added - {data1} ");
+                        FilestreeamEx.AppendData(data1);
+                        break;
+                     
+                }
+            }
+
+
+
+
+
+
+            serialization
+
+            
+        const string FilePath_Serializeddata = @"D:\RFP146\serializeddata.txt";
+        public static void BinarySerialization()
+        {
+            List<Contact> data = new List<Contact>()
+            {
+                new Contact {Age = 25, Name = "Rajashri" },
+                new Contact {Age = 24, Name = "Sayali" },
+                new Contact {Age = 23, Name = "Aditi" },
+            };
+            FileStream streamdata = new FileStream(FilePath_Serializeddata, FileMode.Create);
+            BinaryFormatter bn = new BinaryFormatter();
+            bn.Serialize(streamdata, data);
+            streamdata.Close();
+            streamdata.Dispose();
+            Console.WriteLine("*** Convert Object To Binary ***");
+            string binaryTxt = File.ReadAllText(FilePath_Serializeddata);
+            Console.WriteLine(binaryTxt);
+            Console.WriteLine("\n=====================================================\n");
+        }
+        public static void BinaryDeserialization()
+        {
+            FileStream streamdata = new FileStream(FilePath_Serializeddata, FileMode.Open);
+            BinaryFormatter bn = new BinaryFormatter();
+            var data = (List<Contact>)bn.Deserialize(streamdata);
+            streamdata.Close();
+            Console.WriteLine("*** Convert List Of Binary Data To Object***");
+            foreach (var contact in data)
+            {
+                Console.Write(contact.Name);
+                Console.Write(contact.Age);
+                Console.WriteLine("");
+            }
+            Console.WriteLine("\n=====================================================\n");
+        }
+        public static void xml()
+        {
+             string FilePath_xmlSerializeddata = @"D:\RFP146\FileIO\serializeddata.xml";
+            FileStream streamdata = new FileStream(FilePath_xmlSerializeddata, FileMode.Create);
+            XmlSerializer serialization = new XmlSerializer(typeof(List<Contact>));
+            List<Contact> data = new List<Contact>()
+            {
+                new Contact {Age = 25, Name = "j" },
+                new Contact {Age = 24, Name = "Sayali" },
+                new Contact {Age = 23, Name = "Aditi" },
+            };
+            serialization.Serialize(streamdata, data);
+
+
+        }
+        public static void xmlde()
+        {
+             string FilePath_xmlSerializeddata = @"D:\RFP146\FileIO\serializeddata.xml";
+            FileStream streamdata = new FileStream(FilePath_xmlSerializeddata, FileMode.Open);
+            XmlSerializer serialization = new XmlSerializer(typeof(List<Contact>));
+            List<Contact> data = (List < Contact > )serialization.Deserialize(streamdata);
+
+            streamdata.Close();
+            foreach (var d in data)
+            {
+                Console.WriteLine(d.Age);
+                Console.WriteLine(d.Name);
+            }
+        }
